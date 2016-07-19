@@ -1,5 +1,5 @@
 listbyindustry <- function(){
-  newtable <- with(sto, data.frame(id=paste0("symbol_", Ticker), text=paste(Ticker, "-", Company), leaf=TRUE, Industry=Industry, Sector=Sector));
+  newtable <- with(IBEX, data.frame(id=paste0("symbol_", Ticker), text=paste(Ticker, "-", Company), leaf=TRUE, Industry=Industry, Sector=Sector));
   mydata <- splitIntoTree(newtable, "Sector");
   mydata$children <- lapply(mydata$children, splitIntoTree, f="Industry", out=c("id", "text", "leaf"));
   invisible(list("text"=".", children=mydata))
