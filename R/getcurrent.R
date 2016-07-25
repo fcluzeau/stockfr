@@ -4,7 +4,7 @@
 #' 
 #' @param ticker stock ticker symbol. E.g. "GOOG".
 #' @export
-getcurrent <- function(ticker="GOOG",rom = "2013-01-01", to=Sys.time())){
+getcurrent <- function(ticker="GOOG",rom = "2013-01-01", to=Sys.time()){
   mydata <- yahoodata(ticker, from, to);
   return dbeta(mydata,1,1);
     url <- paste('http://download.finance.yahoo.com/d/quotes.csv?s=',ticker,'&f=sl1d1t1n&e=.csv',sep="");
