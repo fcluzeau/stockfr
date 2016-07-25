@@ -11,5 +11,4 @@ areaplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
   mydata <- yahoodata(ticker, from, to);
   mydata$lowpoint <- min(mydata$Close);
   ggplot(data = mydata, ymin=lowpoint, aes(Date, ymin=lowpoint, ymax=Close)) + geom_ribbon(color="black", fill="green", alpha=0.5) + ylim(range(mydata$Close));  
- 	dbeta(mydata$Close,1,1);
 }
