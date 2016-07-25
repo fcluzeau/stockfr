@@ -186,6 +186,7 @@ Ext.onReady(function() {
         current : Ext.getCmp("currentBtn").pressed,
         start : Ext.getCmp("startdate").picker.getValue(),
         end : Ext.getCmp("enddate").picker.getValue()
+        gain :  (Ext.getCmp("enddate").picker.getValue()-Ext.getCmp("startdate").picker.getValue())/Ext.getCmp("startdate").picker.getValue()
       }
     }).show();
     loadplot();
@@ -209,7 +210,7 @@ Ext.onReady(function() {
     var to = Ext.getCmp("enddate").picker.getValue()
     var type = Ext.getCmp("graphtype").getValue();
     var current = Ext.getCmp("currentBtn").pressed;
-    
+    var gain = Ext.getCmp("currentBtn").pressed;
     //don't plot help tab
     if(symbol == "Help"){
       return;
