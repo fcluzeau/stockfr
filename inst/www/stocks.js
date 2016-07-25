@@ -186,8 +186,7 @@ Ext.onReady(function() {
         current : Ext.getCmp("currentBtn").pressed,
         start : Ext.getCmp("startdate").picker.getValue(),
         end : Ext.getCmp("enddate").picker.getValue()
-        gain :  (Ext.getCmp("enddate").picker.getValue()-Ext.getCmp("startdate").picker.getValue())/Ext.getCmp("startdate").picker.getValue()
-      }
+       }
     }).show();
     loadplot();
     }
