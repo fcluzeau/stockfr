@@ -59,7 +59,6 @@ Ext.onReady(function() {
             {"fun":"smoothplot", "name":"Smooth Plot"},
             {"fun":"highlowplot", "name":"High/Low Plot"},
             {"fun":"areaplot", "name":"Area Plot"}
-            {"fun":"tendance", "name":"Tendance"}
           ]          
         },
         queryMode: 'local',
