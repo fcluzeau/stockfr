@@ -10,12 +10,13 @@
 #' @param current include the current price of this stock. TRUE/FALSE.
 #' @import ggplot2
 #' @export
-plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE){
+plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot","tendance"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE){
 	type <- match.arg(type);
 	myplot <- switch(type,
 		smoothplot = smoothplot(ticker, from, to),
 		highlowplot = highlowplot(ticker, from, to),
 		areaplot = areaplot(ticker, from, to),
+		tendance = tendance(ticker,from,to),
 		stop("Unknown plot type:", type)
 	);
 	
