@@ -93,6 +93,12 @@ Ext.onReady(function() {
         enableToggle: true,
         text: "Valeur Actuelle",
         iconCls: 'chartIcon'
+      },{
+        xtype: "button",
+        id: "moyenneBtn",
+        enableToggle: true,
+        text: "Moyenne",
+        iconCls: 'chartIcon'
       }]
   });
 
@@ -171,6 +177,10 @@ Ext.onReady(function() {
     loadplot();
   });
   
+    Ext.getCmp("moyenneBtn").on("click", function(){
+    loadplot();
+  });
+  
   Ext.getCmp("graphtype").on("select", function(){
     loadplot();
   })  
@@ -184,6 +194,7 @@ Ext.onReady(function() {
       data : {
         type : Ext.getCmp("graphtype").getValue(),
         current : Ext.getCmp("currentBtn").pressed,
+        moyenne : Ext.getCmp("moyenneBtn").pressed,
         start : Ext.getCmp("startdate").picker.getValue(),
         end : Ext.getCmp("enddate").picker.getValue()
        }
@@ -197,7 +208,8 @@ Ext.onReady(function() {
       Ext.getCmp("startdate").picker.setValue(data.start);
       Ext.getCmp("enddate").picker.setValue(data.end);
       Ext.getCmp("graphtype").setValue(data.type);
-      Ext.getCmp("currentBtn").toggle(data.current);      
+      Ext.getCmp("currentBtn").toggle(data.current); 
+      Ext.getCmp("moyenneBtn").toggle(data.moyenne);
       updatestart(data.start);
       updateend(data.end);
     }
@@ -210,6 +222,7 @@ Ext.onReady(function() {
     var type = Ext.getCmp("graphtype").getValue();
     var current = Ext.getCmp("currentBtn").pressed;
     var gain = Ext.getCmp("currentBtn").pressed;
+    var moyenne = Ext.getCmp("moyenneBtn").pressed;
     //don't plot help tab
     if(symbol == "Help"){
       return;
@@ -230,7 +243,8 @@ Ext.onReady(function() {
       from : datetostring(from), 
       to : datetostring(to), 
       type : type, 
-      current : current
+      current : current,
+      moyenne : moyenne
     }).fail(function(){
       alert("Failed to plot stock: " + req.responseText)
     });
