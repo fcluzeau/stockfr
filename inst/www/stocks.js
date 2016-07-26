@@ -203,11 +203,11 @@ Ext.onReady(function() {
     loadplot();
 });
 
- Ext.getCmp("varianceBtn").on("click", function(){
+ Ext.getCmp("skewnessBtn").on("click", function(){
     loadplot();
 });
 
- Ext.getCmp("varianceBtn").on("click", function(){
+ Ext.getCmp("kurtosisBtn").on("click", function(){
     loadplot();
 });
   
