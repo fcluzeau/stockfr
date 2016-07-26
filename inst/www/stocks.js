@@ -68,7 +68,7 @@ Ext.onReady(function() {
         id: "graphtype",
         iconCls: 'chartIcon'
       }, {
-        text: 'From 2015-01-01',
+        text: 'Date de Début: 2015-01-01',
         id: 'startdatetext',
         iconCls: 'calendarIcon',
         menu: {
@@ -150,11 +150,11 @@ Ext.onReady(function() {
   });
   
   function updatestart(date){
-    Ext.getCmp("startdatetext").setText("From: " + datetostring(date));
+    Ext.getCmp("startdatetext").setText("Date de Début: " + datetostring(date));
   }
   
   function updateend(date){
-    Ext.getCmp("enddatetext").setText("To: " + datetostring(date));
+    Ext.getCmp("enddatetext").setText("Date de Fin: " + datetostring(date));
   }
   
   Ext.getCmp("startdate").picker.on("select", function(picker, date){
