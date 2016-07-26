@@ -78,7 +78,7 @@ Ext.onReady(function() {
           value: new Date('01/01/2015')
         }
       }, {
-        text: 'To: ' + today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
+        text: 'Date de Fin: ' + today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
         id: 'enddatetext',
         iconCls: 'calendarIcon',      
         menu: {
