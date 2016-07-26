@@ -10,13 +10,12 @@
 #' @param current include the current price of this stock. TRUE/FALSE.
 #' @import ggplot2
 #' @export
-plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot","tendance"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE){
+plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE, moyenne=FALSE){
 	type <- match.arg(type);
 	myplot <- switch(type,
 		smoothplot = smoothplot(ticker, from, to),
 		highlowplot = highlowplot(ticker, from, to),
 		areaplot = areaplot(ticker, from, to),
-		tendance = tendance(ticker,from,to),
 		stop("Unknown plot type:", type)
 	);
 	
@@ -26,9 +25,13 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot","tendance
 	if(isTRUE(current)){
 		currentvalue <- getcurrent(ticker)$Value
 		myplot <- myplot + geom_hline(yintercept = currentvalue, colour = "red", linetype = 2, size = 0.8);	
-		myplot <- myplot + geom_text(x = -Inf, y = currentvalue, label = paste("$", currentvalue), hjust = -1, vjust = -0.5, color="black");	
+		myplot <- myplot + geom_text(x = -Inf, y = currentvalue, label = paste("devise locale", currentvalue), hjust = -1, vjust = -0.5, color="red");	
 	}
-	
+		if(isTRUE(moyenne)){
+		moyenne <- getMoyenne(ticker, from, to)$Value
+		myplot <- myplot + geom_hline(yintercept = moyenne, colour = "green", linetype = 2, size = 0.8);	
+		myplot <- myplot + geom_text(x = -Inf, y = moyenne, label = paste("devise locale", moyenne), hjust = -1, vjust = -0.5, color="green");	
+	}
 	#make sure to print the plot
 	print(myplot);
 	
