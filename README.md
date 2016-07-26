@@ -5,7 +5,7 @@ Simple OpenCPU Application. To install in R:
 
     library(devtools)
     install_github("opencpu", "jeroenooms")
-    install_github("stocks", "opencpu")
+    install_github("stock", "fcluzeau")
 
     #load the app
     library(opencpu)
@@ -21,5 +21,5 @@ Use the same function locally:
     ?smoothplot
     ?plotwrapper
 
-For more information about OpenCPU apps, see [opencpu.js](https://github.com/jeroenooms/opencpu.js#readme)
+
 
