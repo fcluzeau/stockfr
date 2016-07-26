@@ -28,7 +28,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot"), ticker=
 		myplot <- myplot + geom_text(x = -Inf, y = currentvalue, label = paste("devise locale", currentvalue), hjust = -1, vjust = -0.5, color="red");	
 	}
 		if(isTRUE(moyenne)){
-		moyenne <- getMoyenne(ticker, from, to)$Value
+		moyenne <- getMoyenne(ticker, from, to)
 		myplot <- myplot + geom_hline(yintercept = moyenne, colour = "green", linetype = 2, size = 0.8);	
 		myplot <- myplot + geom_text(x = -Inf, y = moyenne, label = paste("devise locale", moyenne), hjust = -1, vjust = -0.5, color="green");	
 	}
