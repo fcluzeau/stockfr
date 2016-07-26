@@ -11,5 +11,4 @@ License: GPL
 LazyData: yes
 Imports:
     ggplot2
-  Imports:  moments
 Suggests: opencpu (>= 1.2)
