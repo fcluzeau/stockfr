@@ -33,7 +33,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot"), ticker=
 		skewness<-getSkewness(ticker, from, to)
 		kurtosis<-getKurtosis(ticker, from, to)
 		myplot <- myplot + geom_hline(yintercept = moyenne, colour = "blue", linetype = 2, size = 0.8);	
-		myplot <- myplot + geom_text(x = -Inf, y = moyenne, label = paste("Moyenne en devise locale:", moyenne,"; Variance:", var,"; Skewness:", skewness,"; Kurtosis:", kurtosis), hjust = -1, vjust = -0.5, color=blue");	
+		myplot <- myplot + geom_text(x = -Inf, y = moyenne, label = paste("Moyenne en devise locale:", moyenne,"; Variance:", var,"; Skewness:", skewness,"; Kurtosis:", kurtosis), hjust = -1, vjust = -0.5, color="blue");	
 	}
 	#make sure to print the plot
 	print(myplot);
