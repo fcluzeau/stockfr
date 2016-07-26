@@ -91,7 +91,7 @@ Ext.onReady(function() {
         xtype: "button",
         id: "currentBtn",
         enableToggle: true,
-        text: "Toggle Current Value",
+        text: "Valeur Actuelle",
         iconCls: 'chartIcon'
       }]
   });
