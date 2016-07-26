@@ -58,7 +58,8 @@ Ext.onReady(function() {
           data : [
             {"fun":"smoothplot", "name":"Smooth Plot"},
             {"fun":"highlowplot", "name":"High/Low Plot"},
-            {"fun":"areaplot", "name":"Area Plot"}
+            {"fun":"areaplot", "name":"Area Plot"},
+            {"fun":"compare","name":"Compare"}
           ]          
         },
         queryMode: 'local',
