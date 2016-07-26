@@ -68,14 +68,14 @@ Ext.onReady(function() {
         id: "graphtype",
         iconCls: 'chartIcon'
       }, {
-        text: 'From 2013-01-01',
+        text: 'From 2015-01-01',
         id: 'startdatetext',
         iconCls: 'calendarIcon',
         menu: {
           xtype: 'datemenu',
           minValue: new Date('01/01/2000'),
           id: 'startdate',
-          value: new Date('01/01/2013')
+          value: new Date('01/01/2015')
         }
       }, {
         text: 'To: ' + today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
