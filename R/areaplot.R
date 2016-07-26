@@ -9,5 +9,6 @@
 #' @export
 areaplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
   mydata <- yahoodata(ticker, from, to);
-  ggplot(data = mydata, ymin=lowpoint, aes(Date, ymin=lowpoint, ymax=0)) + geom_ribbon(color="black", fill="green", alpha=0.5) + ylim(range(mydata$Close));  
+mydata$up <- mydata$Open < mydata$Close;
+  ggplot(data = mydata, ymin=lowpoint, aes(Date, ymin=Low, ymax=High)) + geom_ribbon(color="black", fill="green", alpha=0.5) + ylim(range(mydata$Close));  
 }
