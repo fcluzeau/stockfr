@@ -68,17 +68,17 @@ Ext.onReady(function() {
         id: "graphtype",
         iconCls: 'chartIcon'
       }, {
-        text: 'Date de Début: 2015-01-01',
+        text: 'From 2013-01-01',
         id: 'startdatetext',
         iconCls: 'calendarIcon',
         menu: {
           xtype: 'datemenu',
           minValue: new Date('01/01/2000'),
           id: 'startdate',
-          value: new Date('01/01/2015')
+          value: new Date('01/01/2013')
         }
       }, {
-        text: 'Date de Fin: ' + today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
+        text: 'To: ' + today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
         id: 'enddatetext',
         iconCls: 'calendarIcon',      
         menu: {
@@ -91,7 +91,7 @@ Ext.onReady(function() {
         xtype: "button",
         id: "currentBtn",
         enableToggle: true,
-        text: "Valeur Actuelle",
+        text: "Toggle Current Value",
         iconCls: 'chartIcon'
       }]
   });
@@ -150,11 +150,11 @@ Ext.onReady(function() {
   });
   
   function updatestart(date){
-    Ext.getCmp("startdatetext").setText("Date de Début: " + datetostring(date));
+    Ext.getCmp("startdatetext").setText("From: " + datetostring(date));
   }
   
   function updateend(date){
-    Ext.getCmp("enddatetext").setText("Date de Fin: " + datetostring(date));
+    Ext.getCmp("enddatetext").setText("To: " + datetostring(date));
   }
   
   Ext.getCmp("startdate").picker.on("select", function(picker, date){
@@ -186,7 +186,7 @@ Ext.onReady(function() {
         current : Ext.getCmp("currentBtn").pressed,
         start : Ext.getCmp("startdate").picker.getValue(),
         end : Ext.getCmp("enddate").picker.getValue()
-       }
+      }
     }).show();
     loadplot();
     }
@@ -209,7 +209,7 @@ Ext.onReady(function() {
     var to = Ext.getCmp("enddate").picker.getValue()
     var type = Ext.getCmp("graphtype").getValue();
     var current = Ext.getCmp("currentBtn").pressed;
-    var gain = Ext.getCmp("currentBtn").pressed;
+    
     //don't plot help tab
     if(symbol == "Help"){
       return;
