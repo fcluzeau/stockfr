@@ -35,14 +35,17 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot"), ticker=
 		}
 		
 		if(isTRUE(variance)){
+		moyenne <- getMoyenne(ticker, from, to)
 		var<-getVariance(ticker, from, to)
 		myplot <- myplot + geom_label(x=-Inf,y = (moyenne/1.1), size=4, label = paste("Variance:", var), hjust = -1, vjust = -0.5, color="blue");	
 		}
 		if(isTRUE(skewness)){
+		moyenne <- getMoyenne(ticker, from, to)
 		skewn<-getSkewness(ticker, from, to)
 		myplot <- myplot + geom_label(x=-Inf, y = (moyenne/1.15),  size=4, label = paste("Skewness:", skewn), hjust = -1, vjust = -0.5, color="blue");
 		}
 		if(isTRUE(kurtosis)){
+		moyenne <- getMoyenne(ticker, from, to)
 		kurto<-getKurtosis(ticker, from, to)	
 		myplot <- myplot + geom_label(x=-Inf, y = (moyenne/1.2),  size=4, label = paste("Kurtosis:", kurto), hjust = -1, vjust = -0.5, color="blue");	
 	}
