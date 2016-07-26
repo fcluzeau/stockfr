@@ -99,7 +99,25 @@ Ext.onReady(function() {
         enableToggle: true,
         text: "Moyenne",
         iconCls: 'chartIcon'
-      }]
+      },{
+        xtype: "button",
+        id: "varianceBtn",
+        enableToggle: true,
+        text: "Variance",
+        iconCls: 'chartIcon'
+},{
+        xtype: "button",
+        id: "skewnessBtn",
+        enableToggle: true,
+        text: "Skewness",
+        iconCls: 'chartIcon'
+},{
+        xtype: "button",
+        id: "kurtosisBtn",
+        enableToggle: true,
+        text: "Kurtosis",
+        iconCls: 'chartIcon'
+}]
   });
 
   var workspacePanel = new Ext.TabPanel({
@@ -181,6 +199,18 @@ Ext.onReady(function() {
     loadplot();
   });
   
+   Ext.getCmp("varianceBtn").on("click", function(){
+    loadplot();
+});
+
+ Ext.getCmp("varianceBtn").on("click", function(){
+    loadplot();
+});
+
+ Ext.getCmp("varianceBtn").on("click", function(){
+    loadplot();
+});
+  
   Ext.getCmp("graphtype").on("select", function(){
     loadplot();
   })  
@@ -195,6 +225,9 @@ Ext.onReady(function() {
         type : Ext.getCmp("graphtype").getValue(),
         current : Ext.getCmp("currentBtn").pressed,
         moyenne : Ext.getCmp("moyenneBtn").pressed,
+        variance : Ext.getCmp("varianceBtn").pressed,
+        skewness : Ext.getCmp("skewnessBtn").pressed,
+        kurtosis : Ext.getCmp("kurtosisBtn").pressed,
         start : Ext.getCmp("startdate").picker.getValue(),
         end : Ext.getCmp("enddate").picker.getValue()
        }
@@ -210,6 +243,9 @@ Ext.onReady(function() {
       Ext.getCmp("graphtype").setValue(data.type);
       Ext.getCmp("currentBtn").toggle(data.current); 
       Ext.getCmp("moyenneBtn").toggle(data.moyenne);
+      Ext.getCmp("varianceBtn").toggle(data.variance);
+      Ext.getCmp("skewnessBtn").toggle(data.skewness);
+      Ext.getCmp("kurtosisBtn").toggle(data.kurtosis);
       updatestart(data.start);
       updateend(data.end);
     }
@@ -223,6 +259,9 @@ Ext.onReady(function() {
     var current = Ext.getCmp("currentBtn").pressed;
     var gain = Ext.getCmp("currentBtn").pressed;
     var moyenne = Ext.getCmp("moyenneBtn").pressed;
+    var variance = Ext.getCmp("varianceBtn").pressed;
+    var skewness = Ext.getCmp("skewnessBtn").pressed;
+    var kurtosis = Ext.getCmp("kurtosisBtn").pressed;
     //don't plot help tab
     if(symbol == "Help"){
       return;
@@ -244,7 +283,10 @@ Ext.onReady(function() {
       to : datetostring(to), 
       type : type, 
       current : current,
-      moyenne : moyenne
+      moyenne : moyenne,
+      variance : variance,
+      skewness : skewness,
+      kurtosis : kurtosis
     }).fail(function(){
       alert("Failed to plot stock: " + req.responseText)
     });
