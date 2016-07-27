@@ -22,7 +22,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		stop("Unknown plot type:", type)
 	);
 	
-	if(type!="plotDensity" & type!="getPlotCapitalGain"){
+	if(type!="plotDensity" & type!="getPlotCapitalGain" & type!="densityGain"){
 	#remove axis label date
 	myplot <- myplot + xlab("") + ylab(ticker);}
 	else{myplot}
