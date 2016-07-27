@@ -8,8 +8,8 @@ gainf<-matrix(ncol=2,nrow=floor(num-1));
 for(i in 1:num-1){
 gain[i,1]<- 100*((mydata[i,2]-mydata[i+1,2])/mydata[i,2]);
 gain[i,2]<-mydata[i+1,3];
-if((i/5)==floor(i/5)){
-gainf[(i/5),]<-gain[i,];
+if((i/20)==floor(i/20)){
+gainf[(i/20),]<-gain[i,];
 }}
 gainf<-as.data.frame(gainf);
 colnames(gainf)<-c("Value","Date");
