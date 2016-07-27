@@ -1,5 +1,6 @@
 export(areaplot)
 export(getcurrent)
+export(getCapitalGain)
 export(highlowplot)
 export(listbyindustry)
 export(plotDensity)
