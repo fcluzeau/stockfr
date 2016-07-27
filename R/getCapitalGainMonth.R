@@ -4,13 +4,15 @@ mydata <- yahoodata(ticker, from, to);
 names(mydata) <- c("Symbol","Value","Date","Time","Name");
 num<-dim(mydata)[1]
 l<-0;
+j<-1;
 ave<-vector("numeric", floor(num/29));
 gain<-matrix(nrow=floor(num/29),ncol=2);
 ate<-vector("numeric", floor(num/29));
 for(i in 1:num){
 if(i==1%%29){
 ave[j]<-mydata[i,2]
-ate[j]<-mydata[i,3]}
+ate[j]<-mydata[i,3]
+j<-j+1}
 }
 
 for(i in 1:floor(num/29)){
