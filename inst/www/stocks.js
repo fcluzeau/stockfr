@@ -60,7 +60,7 @@ Ext.onReady(function() {
             {"fun":"highlowplot", "name":"High/Low Plot"},
             {"fun":"areaplot", "name":"Area Plot"},
             {"fun":"plotDensity", "name":"Densité"},
-            {"fun":"getPlotCapitalGain", "name":"Plus-Value"
+            {"fun":"getPlotCapitalGain", "name":"Plus-Value"},
           ]          
         },
         queryMode: 'local',
