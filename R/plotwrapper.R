@@ -25,7 +25,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	myplot <- myplot + xlab("") + ylab(ticker);}
 	else{
 	capgain<-getCapitalGain(ticker, from, to);
-	myplot <- myplot + geom_label( size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");}
+	myplot <- myplot + geom_label( locator(1), size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");}
 	
 	if(isTRUE(current)){
 		currentvalue <- getcurrent(ticker)$Value
