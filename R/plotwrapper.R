@@ -36,7 +36,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		capgain <- getCapitalGain(ticker, from, to);
 		myplot <- myplot + geom_hline(yintercept = moyenne, colour = "blue", linetype = 2, size = 0.8);	
 		myplot <- myplot + geom_label(x=-Inf,y = (moyenne/1.05), size=4, label = paste("Moyenne en devise locale:", moyenne), hjust = -1, vjust = -0.5, color="blue");
-		myplot <- myplot + geom_label( locator(1), size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");
+		myplot <- myplot + geom_label( location="bottom", size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");
 	
 		}
 		
