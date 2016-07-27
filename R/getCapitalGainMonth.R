@@ -8,16 +8,13 @@ j<-1;
 ave<-vector("numeric", floor(num/29));
 gain<-matrix(nrow=floor(num/29),ncol=2);
 ate<-vector("numeric", floor(num/29));
-for(i in 1:num){
-if(i==1%%29){
-ave[j]<-mydata[i,2]
-ate[j]<-mydata[i,3]
-j<-j+1}
+for(i in 1:floor(num/29)){
+ave[i]<-mydata[i*29,2]
+ate[i]<-mydata[i*29,3]
+gain[i,1]<- (ave[i]-ave[i+1])/ave[i];
+gain[i,2]<-ate[i]
 }
 
-for(i in 1:floor(num/29)){
-gain[i,1]<- (ave[i]-ave[i+1])/ave[i];
-gain[i,2]<-ate[i];}
-
+colnames(gain)<-c("Value","Date");
 return(gain);
 }
