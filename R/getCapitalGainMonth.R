@@ -4,10 +4,14 @@ mydata <- yahoodata(ticker, from, to);
 names(mydata) <- c("Symbol","Value","Date","Time","Name");
 num<-dim(mydata)[1];
 gain<-matrix(ncol=2,nrow=num-1);
+gainf<-matrix(ncol=2,nrow=floor(num-1));
 for(i in 1:num-1){
 gain[i,1]<- 100*((mydata[i,2]-mydata[i+1,2])/mydata[i,2]);
-gain[i,2]<-mydata[i+1,3];}
-gain<-as.data.frame(gain);
-colnames(gain)<-c("Value","Date");
-return(gain);
+gain[i,2]<-mydata[i+1,3];
+if((i/5)==floor(i/5)){
+gainf[(i/5),]<-gain[i,];
+}}
+gainf<-as.data.frame(gainf);
+colnames(gainf)<-c("Value","Date");
+return(gainf);
 }
