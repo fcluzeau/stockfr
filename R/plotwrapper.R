@@ -30,7 +30,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	if(isTRUE(current)){
 		currentvalue <- getcurrent(ticker)$Value
 		myplot <- myplot + geom_hline(yintercept = currentvalue, colour = "red", linetype = 2, size = 0.8);	
-		myplot <- myplot + geom_label(x=-Inf, y = currentvalue, size=4, label = paste("Moyenne en devise locale:", currentvalue), hjust = -1, vjust = -0.5, color="red");
+		myplot <- myplot + geom_label(x=-Inf, y = currentvalue, size=4, label = paste("Valeur en temps réelle en devise locale:", currentvalue), hjust = -1, vjust = -0.5, color="red");
 	}
 	
 		if(isTRUE(moyenne)){
