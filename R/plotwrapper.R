@@ -23,9 +23,8 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	if(type!="plotDensity"){
 	#remove axis label date
 	myplot <- myplot + xlab("") + ylab(ticker);}
-	else{
+	else{myplot}
 	
-	myplot <- myplot}
 	if(isTRUE(current)){
 		currentvalue <- getcurrent(ticker)$Value
 		myplot <- myplot + geom_hline(yintercept = currentvalue, colour = "red", linetype = 2, size = 0.8);	
