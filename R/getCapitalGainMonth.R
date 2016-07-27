@@ -2,7 +2,7 @@
 getCapitalGainMonth <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
 mydata <- yahoodata(ticker, from, to);
 names(mydata) <- c("Symbol","Value","Date","Time","Name");
-num<-dim(mydata)[1]
+num<-dim(mydata)[1];
 l<-0;
 ave<-vector("numeric", floor(num/29)-1);
 gain<-matrix(nrow=floor(num/29)-1,ncol=2);
@@ -13,7 +13,7 @@ ate[i]<-mydata[i*29,3]
 gain[i,1]<- (ave[i]-ave[i+1])/ave[i];
 gain[i,2]<-ate[i]
 }
-
+gain=as.data.frame(gain);
 colnames(gain)<-c("Value","Date");
 return(gain);
 }
