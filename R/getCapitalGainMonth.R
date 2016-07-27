@@ -4,7 +4,7 @@ mydata <- yahoodata(ticker, from, to);
 names(mydata) <- c("Symbol","Value","Date","Time","Name");
 num<-dim(mydata)[1];
 gain<-matrix(ncol=2,nrow=num-1);
-gainf<-matrix(ncol=2,nrow=floor(num-1));
+gainf<-matrix(ncol=2,nrow=floor((num-1)/20));
 for(i in 1:num-1){
 gain[i,1]<- 100*((mydata[i,2]-mydata[i+1,2])/mydata[i,2]);
 gain[i,2]<-mydata[i+1,3];
