@@ -5,7 +5,7 @@ names(mydata) <- c("Symbol","Value","Date","Time","Name");
 num<-dim(mydata)[1]
 l<-0;
 ave<-vector("numeric", floor(num/29));
-gain<matrix(nrow=floor(num/29),ncol=2);
+gain<-matrix(nrow=floor(num/29),ncol=2);
 ate<-vector("numeric", floor(num/29));
 for(i in 1:num){
 if(i==1%%29){
