@@ -1,7 +1,6 @@
 
 getPlotCapitalGain<- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
-mydata <- getCapitalGainMonth(ticker, from, to);
-names(mydata) <- c("Value","Date");
+mydata <- getCapitalGainMonth(ticker, from, to);;
 d=as.data.frame(mydata);
-qplot(d$Date, d$Value, geom = c("line", "smooth")) 
+qplot(Date, Value, data=d, geom = c("line", "smooth")) 
 }
