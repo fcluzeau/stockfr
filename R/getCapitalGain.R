@@ -5,5 +5,6 @@ getCapitalGain <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
   ase1 <- mydata[1,2];
   ase2<- mydata[num,2];
   gain<- (ase1-ase2)/ase2;
+  gain<-round(gain,5);
   return(gain);
 }
