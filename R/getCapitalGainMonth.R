@@ -4,11 +4,10 @@ mydata <- yahoodata(ticker, from, to);
 names(mydata) <- c("Symbol","Value","Date","Time","Name");
 num<-dim(mydata)[1]
 l<-0;
-j<-1;
-ave<-vector("numeric", floor(num/29));
-gain<-matrix(nrow=floor(num/29),ncol=2);
-ate<-vector("numeric", floor(num/29));
-for(i in 1:floor(num/29)){
+ave<-vector("numeric", floor(num/29)-1);
+gain<-matrix(nrow=floor(num/29)-1,ncol=2);
+ate<-vector("numeric", floor(num/29)-1);
+for(i in 1:floor(num/29)-1){
 ave[i]<-mydata[i*29,2]
 ate[i]<-mydata[i*29,3]
 gain[i,1]<- (ave[i]-ave[i+1])/ave[i];
