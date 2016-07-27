@@ -23,7 +23,9 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	if(type!="plotDensity"){
 	#remove axis label date
 	myplot <- myplot + xlab("") + ylab(ticker);}
-	else{myplot}
+	else{
+	capgain<-getCapitalGain(ticker, from, to);
+	myplot <- myplot + geom_label( size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");}
 	
 	if(isTRUE(current)){
 		currentvalue <- getcurrent(ticker)$Value
