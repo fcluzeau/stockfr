@@ -24,9 +24,8 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	#remove axis label date
 	myplot <- myplot + xlab("") + ylab(ticker);}
 	else{
-	capgain<-getCapitalGain(ticker, from, to);
-	myplot <- myplot + geom_label( locator(1), size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");}
 	
+	myplot <- myplot}
 	if(isTRUE(current)){
 		currentvalue <- getcurrent(ticker)$Value
 		myplot <- myplot + geom_hline(yintercept = currentvalue, colour = "red", linetype = 2, size = 0.8);	
@@ -34,9 +33,12 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	}
 	
 		if(isTRUE(moyenne)){
-		moyenne <- getMoyenne(ticker, from, to)
+		moyenne <- getMoyenne(ticker, from, to);
+		capgain <- getCapitalGain(ticker, from, to);
 		myplot <- myplot + geom_hline(yintercept = moyenne, colour = "blue", linetype = 2, size = 0.8);	
 		myplot <- myplot + geom_label(x=-Inf,y = (moyenne/1.05), size=4, label = paste("Moyenne en devise locale:", moyenne), hjust = -1, vjust = -0.5, color="blue");
+		myplot <- myplot + geom_label( locator(1), size=4, label = paste("Capital Gain", capgain), hjust = -1, vjust = -0.5, color="blue");}
+	
 		}
 		
 		if(isTRUE(variance)){
