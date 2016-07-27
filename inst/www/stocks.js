@@ -61,6 +61,7 @@ Ext.onReady(function() {
             {"fun":"areaplot", "name":"Area Plot"},
             {"fun":"plotDensity", "name":"Densité"},
             {"fun":"getPlotCapitalGain", "name":"Plus-Value"},
+            {"fun":"densityGain", "name":"Densité de la Plus-Value"},
           ]          
         },
         queryMode: 'local',
