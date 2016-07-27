@@ -10,7 +10,7 @@
 #' @param current include the current price of this stock. TRUE/FALSE.
 #' @import ggplot2
 #' @export
-plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDensity"), ticker="GOOG",legend="", from="2013-01-01", to=Sys.time(), current=FALSE, moyenne=FALSE, variance=FALSE, skewness=FALSE, kurtosis=FALSE){
+plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDensity"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE, moyenne=FALSE, variance=FALSE, skewness=FALSE, kurtosis=FALSE){
 	type <- match.arg(type);
 	myplot <- switch(type,
 		smoothplot = smoothplot(ticker, from, to),
@@ -33,10 +33,8 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	
 		if(isTRUE(moyenne)){
 		moyenne <- getMoyenne(ticker, from, to);
-		capgain <- getCapitalGain(ticker, from, to);
 		myplot <- myplot + geom_hline(yintercept = moyenne, colour = "blue", linetype = 2, size = 0.8);	
 		myplot <- myplot + geom_label(x=-Inf,y = (moyenne/1.05), size=4, label = paste("Moyenne en devise locale:", moyenne), hjust = -1, vjust = -0.5, color="blue");
-		myplot <- myplot + legend("topright", inset=.05, title=paste("Gain du Capital:", capgain ,"%"))
 	
 		}
 		
