@@ -1,7 +1,7 @@
 getPortefeuilleValue<-function(from="2013-01-01", to=Sys.time()){
 ticker=getPortefeuille();
 mydata<-matrix(ncol=(dim(ticker)[1]+2),nrow=dim(yahoodata("ACA.PA", from, to))[1]);
-mydatf<-matrix(ncol=3, nrow=dim(yahoodata("ACA.PA", from, to))[1]);
+mydataf<-matrix(ncol=3, nrow=dim(yahoodata("ACA.PA", from, to))[1]);
 for(i in 1:(dim(ticker))){
 mydatai<-yahoodata(ticker[1,i], from, to);
 names(mydatai)<-c("Symbol","Value","Date","Time","Name");
