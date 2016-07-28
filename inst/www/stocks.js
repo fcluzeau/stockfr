@@ -62,8 +62,6 @@ Ext.onReady(function() {
             {"fun":"plotDensity", "name":"Densité"},
             {"fun":"getPlotCapitalGain", "name":"Plus-Value"},
             {"fun":"densityGain", "name":"Densité de la Plus-Value"},
-             {"fun":"smoothplotPortefeuille", "name":"Smooth Plot Portefeuille"},
-              {"fun":"plotDensityReturnByShare", "name":"Décomposition des Plus-Values du Portefeuille "},
           ]          
         },
         queryMode: 'local',
@@ -121,6 +119,18 @@ Ext.onReady(function() {
         id: "kurtosisBtn",
         enableToggle: true,
         text: "Kurtosis",
+        iconCls: 'chartIcon'
+},{
+        xtype: "button",
+        id: "DensityPorteBtn",
+        enableToggle: true,
+        text: "Densité par Actions",
+        iconCls: 'chartIcon'
+},{
+        xtype: "button",
+        id: "smoothplotBtn",
+        enableToggle: true,
+        text: "smooth plot Portefeuille",
         iconCls: 'chartIcon'
 }]
   });
@@ -215,10 +225,16 @@ Ext.onReady(function() {
  Ext.getCmp("kurtosisBtn").on("click", function(){
     loadplot();
 });
+  Ext.getCmp("smoothplotBtn").on("click", function(){
+    loadplot();
+  });
+  Ext.getCmp("DensityPorteBtn").on("click", function(){
+    loadplot();
+  });
   
   Ext.getCmp("graphtype").on("select", function(){
     loadplot();
-  })  
+  });
   
   function addWorkspace(symbol){
     workspacePanel.add({
@@ -233,6 +249,8 @@ Ext.onReady(function() {
         variance : Ext.getCmp("varianceBtn").pressed,
         skewness : Ext.getCmp("skewnessBtn").pressed,
         kurtosis : Ext.getCmp("kurtosisBtn").pressed,
+        smoothplotPorte : Ext.getCmp("smoothplotBtn").pressed,
+        densityPorte : Ext.getCmp("DensityPorteBtn").pressed,
         start : Ext.getCmp("startdate").picker.getValue(),
         end : Ext.getCmp("enddate").picker.getValue()
        }
@@ -250,6 +268,8 @@ Ext.onReady(function() {
       Ext.getCmp("moyenneBtn").toggle(data.moyenne);
       Ext.getCmp("varianceBtn").toggle(data.variance);
       Ext.getCmp("skewnessBtn").toggle(data.skewness);
+      Ext.getCmp("DensityPorteBtn").toggle(data.DensityPorte);
+      Ext.getCmp("smoothplotBtn").toggle(data.smoothplotPorte);
       Ext.getCmp("kurtosisBtn").toggle(data.kurtosis);
       updatestart(data.start);
       updateend(data.end);
@@ -267,6 +287,8 @@ Ext.onReady(function() {
     var variance = Ext.getCmp("varianceBtn").pressed;
     var skewness = Ext.getCmp("skewnessBtn").pressed;
     var kurtosis = Ext.getCmp("kurtosisBtn").pressed;
+    var DensityPorte = Ext.getCmp("DensityPorteBtn").pressed;
+    var smoothplotPorte = Ext.getCmp("smoothplotBtn").pressed;
     //don't plot help tab
     if(symbol == "Help"){
       return;
@@ -291,7 +313,9 @@ Ext.onReady(function() {
       moyenne : moyenne,
       variance : variance,
       skewness : skewness,
-      kurtosis : kurtosis
+      kurtosis : kurtosis,
+      smoothplotPorte : smoothplotPorte,
+      DensityPorte : DensityPorte,
     }).fail(function(){
       alert("Failed to plot stock: " + req.responseText)
     });
