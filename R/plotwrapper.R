@@ -61,7 +61,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 	        if(isTRUE(smoothplotPortefeuille)){
 	        smoothplotPortefeuille(from, to)}
 	        
-	        if(isTRUE(plotDensityReturnByShare)){
+	        if(isTRUE(DensityPorte)){
 	        plotDensityReturnByShare(from, to)}
 	        
 	#make sure to print the plot
