@@ -1,6 +1,6 @@
 smoothplotPortefeuille<- function(from = "2013-01-01", to=Sys.time()){
 mydata<-getPortefeuilleValue(from,to);
 
-plot(mydata$Date, y = range(mydata$VALUE), geom = c("line", "smooth"));
+plot(mydata$Value);
 
 }
