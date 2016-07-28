@@ -4,7 +4,7 @@ mydata<-vector("numeric", dim(yahoodata(ticker[1,1], from, to))[1]);
 for(i in 1:(dim(ticker))){
 mydatai<-yahoodata(ticker[1,i], from, to);
 names(mydatai)<-c("Symbol","Value","Date","Time","Name");
-mydata[,1]<-mydata[,1]+as.numeric(ticker[2,i])*as.numeric(mydatai[,2]);
+mydata[i]<-mydata[i]+as.numeric(ticker[2,i])*as.numeric(mydatai[i,2]);
 }
 
 return(mydata);
