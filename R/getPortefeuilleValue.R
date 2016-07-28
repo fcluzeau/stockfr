@@ -15,7 +15,7 @@ mydataf[,1]<-mydataf[,1]+mydata[,i];}
 
 mydataf[,2]<-mydata[,(dim(ticker)+1)];
 mydataf[,3]<-mydata[,(dim(ticker)+2)];
-mydatf<-as.data.frame(gainf);
+mydataf<-as.data.frame(mydataf);
 colnames(mydataf)<-c("Value","Date","Time");
 return(mydataf);
 }
