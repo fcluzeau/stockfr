@@ -62,6 +62,8 @@ Ext.onReady(function() {
             {"fun":"plotDensity", "name":"Densité"},
             {"fun":"getPlotCapitalGain", "name":"Plus-Value"},
             {"fun":"densityGain", "name":"Densité de la Plus-Value"},
+             {"fun":"smoothplotPortefeuille", "name":"Smooth Plot Portefeuille"},
+              {"fun":"plotDensityReturnByShare", "name":"Décomposition des Plus-Values du Portefeuille "},
           ]          
         },
         queryMode: 'local',
