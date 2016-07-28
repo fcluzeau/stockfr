@@ -9,7 +9,7 @@
 #> geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
 #' @export
 smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
-  if(ticker!=portefeuille){mydata <- yahoodata(ticker, from, to);
+  if(ticker!="portefeuille"){mydata <- yahoodata(ticker, from, to);
   qplot(Date, Close, data = mydata, geom = c("line", "smooth"));  
 }
 else{smoothplotPortefeuille(from,to)}
