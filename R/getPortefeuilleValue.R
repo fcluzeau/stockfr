@@ -8,6 +8,6 @@ for(j in 1:(dim(ticker))[1]){
 mydata[j]<-mydata[j]+as.numeric(ticker[2,i])*as.numeric(mydatai[j,2]);
 }
 }
-
+mydata<-as.data.frame(mydata)
 return(mydata);
 }
