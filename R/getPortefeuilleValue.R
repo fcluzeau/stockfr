@@ -10,11 +10,11 @@ mydata[,i]<-as.numeric(ticker[2,i])*as.numeric(mydatai[,2]);
 mydata[,(dim(ticker)+1)]<-mydatai[,3];
 mydata[,(dim(ticker)+2)]<-mydatai[,4];
 
-for(i in 1:(dim(ticker))){
+for(i in 1:(dim(ticker)[1])){
 mydataf[,1]<-mydataf[,1]+mydata[,i];}
 
-mydataf[,2]<-mydata[,(dim(ticker)+1)];
-mydataf[,3]<-mydata[,(dim(ticker)+2)];
+mydataf[,2]<-mydata[,(dim(ticker)[1]+1)];
+mydataf[,3]<-mydata[,(dim(ticker)[1]+2)];
 mydataf<-as.data.frame(mydataf);
 colnames(mydataf)<-c("Value","Date","Time");
 return(mydataf);
