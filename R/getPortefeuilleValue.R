@@ -1,6 +1,5 @@
 getPortefeuilleValue<-function(ticker=c(a1,"GOOG",a2,"ACA.PA"),from="2013-01-01", to=Sys.time()){
-
-
+ticker=getPortefeuille();
 for(i in 1:(dim(ticker)/2)){
 mydatai<-yahoodata(ticker[i*2], from, to);
 names(mydatai)<-c("Symbol","Value","Date","Time","Name");
