@@ -20,7 +20,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		getPlotCapitalGain = getPlotCapitalGain(ticker, from, to),
 		densityGain = densityGain(ticker, from, to),
 		plotDensityPortefeuilleByShare = plotDensityPortefeuilleByShare(from, to),
-		smoothPlotPortefeuille = smoothPlotPortefeuille(from,to);
+		smoothPlotPortefeuille = smoothPlotPortefeuille(from,to),
 		
 		stop("Unknown plot type:", type)
 	);
