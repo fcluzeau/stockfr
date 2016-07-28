@@ -10,7 +10,7 @@
 #' @param current include the current price of this stock. TRUE/FALSE.
 #' @import ggplot2
 #' @export
-plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDensity","getPlotCapitalGain", "densityGain","smoothplotPortefeuille","plotDensityReturnByShare"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE, moyenne=FALSE, variance=FALSE, skewness=FALSE, kurtosis=FALSE){
+plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDensity","getPlotCapitalGain", "densityGain"), ticker="GOOG", from="2013-01-01", to=Sys.time(), current=FALSE, moyenne=FALSE, variance=FALSE, skewness=FALSE, kurtosis=FALSE, smoothplotPortefeuille=FALSE, plotDensityReturnByShare=FALSE){
 	type <- match.arg(type);
 	myplot <- switch(type,
 		smoothplot = smoothplot(ticker, from, to),
@@ -19,8 +19,6 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		plotDensity = plotDensity(ticker, from, to),
 		getPlotCapitalGain = getPlotCapitalGain(ticker, from, to),
 		densityGain = densityGain(ticker, from, to),
-		plotDensityPortefeuilleByShare = plotDensityPortefeuilleByShare(from, to),
-		smoothPlotPortefeuille = smoothPlotPortefeuille(from,to),
 		
 		stop("Unknown plot type:", type)
 	);
@@ -59,6 +57,13 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		kurto<-getKurtosis(ticker, from, to)	
 		myplot <- myplot + geom_label(x=-Inf, y = (moyenne/1.2),  size=4, label = paste("Kurtosis:", kurto), hjust = -1, vjust = -0.5, color="blue");	
 	}
+	
+	        if(isTRUE(smoothplotPortefeuille)){
+	        smoothplotPortefeuille(from, to)}
+	        
+	        if(isTRUE(plotDensityReturnByShare)){
+	        plotDensityReturnByShare(from, to)}
+	        
 	#make sure to print the plot
 	print(myplot);
 	
