@@ -5,7 +5,7 @@ mydatf<-matrix(ncol=3, nrow=dim(yahoodata("ACA.PA", from, to))[1]);
 for(i in 1:(dim(ticker))){
 mydatai<-yahoodata(ticker[1,i], from, to);
 names(mydatai)<-c("Symbol","Value","Date","Time","Name");
-mydata[,i]<-ticker[2,i]*as.numeric(mydatai[,2]);
+mydata[,i]<-as.numeric(ticker[2,i])*as.numeric(mydatai[,2]);
 }
 mydata[,(dim(ticker)+1)]<-mydatai[,3];
 mydata[,(dim(ticker)+2)]<-mydatai[,4];
