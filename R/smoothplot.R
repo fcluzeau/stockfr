@@ -15,9 +15,8 @@ smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
 else{
 action<-c("ACA.PA","MC.PA");
 nombre<-c(2,3);
-portefeuille<-c("action","nombre");
 for(i in 1:2){
-mydata<-yahoodata(portefeuille[1,i], from, to);
+mydata<-yahoodata(action[i], from, to);
 qplot(Date, nombre[i]*Close, data = mydata, geom = c("line", "smooth"));
 }
 }
