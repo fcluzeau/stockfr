@@ -7,8 +7,8 @@ myporte<-matrix( nrow=m , ncol=2);
 for(i in 1:length(action)){
 mydata <- yahoodata(action[i], from, to);
 for(j in 1:dim(mydata)[1]){
-myporte[j,2]<-mydata$Close[j];
-myporte[j,2]<-myporte[j,2]*nombre[i];
+myporte[j,2]<-as.numeric(mydata$Close[j]);
+myporte[j,2]<-myporte[j,2]*as.numeric(nombre[i]);
 }
 }
 
