@@ -19,7 +19,7 @@ skewn<-skewness(gain);
 
 
 x <- gain;
-h<-hist(x, breaks=10, col="red", xlab=("Variations mensuelles en %; moyenne=",moyenne,"; variance:",variance,"; skewness", skewness,"; kurtosis:", kurtosis)
+h<-hist(x, breaks=10, col="red", xlab=paste("Variations mensuelles en %",moyenne,"; variance:",variance,"; skewness", skewness,"; kurtosis:", kurtosis)
    main="Histogramme de la Répartition des Variations Mensuelle")
 xfit<-seq(min(x),max(x),length=40)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
