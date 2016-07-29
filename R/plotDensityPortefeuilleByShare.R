@@ -12,8 +12,9 @@ gain[i]<-round(gain,5);
 }
 
 
-
-return(gain)
+d <- density(gain)
+plot(d, main="Répartition des valeurs")
+polygon(d, col="red", border="blue") 
 }
 
 
