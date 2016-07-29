@@ -59,14 +59,14 @@ Ext.onReady(function() {
         store: {
         fields: ['fun', 'name'],
           data : [
-            {"fun":"smoothplot", "name":"Smooth Plot"},
-            {"fun":"highlowplot", "name":"High/Low Plot"},
-            {"fun":"areaplot", "name":"Area Plot"},
-            {"fun":"plotDensity", "name":"Densité"},
-            {"fun":"getPlotCapitalGain", "name":"Plus-Value"},
-            {"fun":"densityGain", "name":"Densité de la Plus-Value"},
-            {"fun":"plotDensityPortefeuilleByShare","name":"Densité de la Plus-Value par Action"},
-            {"fun":"getPortefeuilleValue","name":"Valeur du Portefeuille"},
+            {"fun":"smoothplot", "name":"ACTION: Smooth Plot"},
+            {"fun":"highlowplot", "name":"ACTION: High/Low Plot"},
+            {"fun":"areaplot", "name":"ACTION: Area Plot"},
+            {"fun":"plotDensity", "name":"ACTION: Densité"},
+            {"fun":"getPlotCapitalGain", "name":"ACTION: Plus-Value"},
+            {"fun":"densityGain", "name":"ACTION: Densité de la Plus-Value"},
+            {"fun":"plotDensityPortefeuilleByShare","name":"PORTEFEUILLE: Densité de la Plus-Value par Action"},
+            {"fun":"getPortefeuilleValue","name":"PORTEFEUILLE: Valeur du Portefeuille"},
           ]          
         },
         queryMode: 'local',
