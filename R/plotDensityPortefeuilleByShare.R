@@ -5,7 +5,7 @@ action<-getPortefeuille()[,1];
 gain<-numeric(length(action));
 for(i in 1:(length(action))){
 ticke<-action[i]
-gaini<-100*getCapitalGain(ticke, from, to)
+gaini<-getCapitalGain(ticke, from, to)
 gain[i]<-round(gaini,5);
 }
  kurt<-kurtosis(gain);
