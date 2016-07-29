@@ -9,9 +9,9 @@ gaini<-getCapitalGain(ticke, from, to)
 gain[i]<-round(gaini,5);
 }
 
-
-plotDensity(gain)
-
+d<-density(gain)
+plot(d, main="Répartition des valeurs")
+polygon(d, col="red", border="blue")
 }
 
 
