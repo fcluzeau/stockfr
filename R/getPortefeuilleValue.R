@@ -7,9 +7,9 @@ for(i in 1:2){
 mydatai<-yahoodata(portefeuille[1,i], from, to);
 mydataf<-c(mydatai$Date, mydatai$Close);
 for(j in 1:2){
-mydata[j]<-mydata[j]+as.numeric(portefeuille[2,i])*as.numeric(mydataf[j,2]);
+mydata[j,2]<-mydata[j,2]+as.numeric(portefeuille[2,i])*as.numeric(mydataf[j,2]);
 }
 }
-
+mydata[,1]<-mydatai$Date;
 return(mydata);
 }
