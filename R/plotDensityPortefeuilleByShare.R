@@ -1,6 +1,6 @@
 plotDensityPortefeuilleByShare<-function(from="2013-01-01", to=Sys.time()){
 
-action<-getPortefeuille()[1,];
+action<-getPortefeuille()[,1];
 
 gain<-numeric(length(action));
 for(i in 1:(length(action))){
