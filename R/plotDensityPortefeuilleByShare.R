@@ -10,7 +10,7 @@ gain[i]<-round(gaini,5);
 }
 
 
-plot(density(gain))
+plotDensity(gain)
 
 }
 
