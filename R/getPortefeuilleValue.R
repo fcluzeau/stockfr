@@ -8,7 +8,7 @@ for(i in 1:2){
 mydatai<-yahoodata(portefeuille[1,i], from, to);
 colnames(mydatai)<-c("Symbol","Value","Date","Time","Name");
 for(j in 1:2){
-mydata[j,1]<-mydata[j,1]+as.numeric(portefeuille[2,i])*as.numeric(mydatai[j,2]);
+mydata[j]<-mydata[j]+as.numeric(portefeuille[2,i])*as.numeric(mydatai[j,2]);
 }
 }
 
