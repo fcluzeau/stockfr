@@ -15,10 +15,35 @@ smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
 else{
 action<-c("ACA.PA","MC.PA");
 
-for(i in 1:length(action)){
-mydata<-yahoodata(action[i], from, to);
- mydata$up <- mydata$Open < mydata$Close;
-ggplot(data=mydata, aes(Date, Close, ymin=Low, ymax=High, color=up)) + geom_linerange() + theme(legend.position="none");
+
+mydata<-yahoodata("ACA.PA", from, to);
+ 
+ x <- mydata$Close;
+h<-hist(x, breaks=10, col="red", xlab="Miles Per Gallon",
+   main="Histogram with Normal Curve")
+xfit<-seq(min(x),max(x),length=40)
+yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+yfit <- yfit*diff(h$mids[1:2])*length(x)
+lines(xfit, yfit, col="blue", lwd=2)
+g<-plot(mydata$Date, mydata$Close, main="Scatterplot of wt vs. mpg")
+
+mydata<-yahoodata("MC.PA", from, to);
+ x <- mydata$Close;
+r<-hist(x, breaks=10, col="red", xlab="Miles Per Gallon",
+   main="Histogram with Normal Curve")
+xfit<-seq(min(x),max(x),length=40)
+yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+yfit <- yfit*diff(h$mids[1:2])*length(x)
+lines(xfit, yfit, col="blue", lwd=2)
+t<-plot(mydata$Date, mydata$Close, main="Scatterplot of wt vs. mpg")
+
+
+attach()
+par(mfrow=c(2,2))
+g
+h
+r
+t
 }
 }
 }
