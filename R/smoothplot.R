@@ -13,8 +13,6 @@ smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
   qplot(Date, Close, data = mydata, geom = c("line", "smooth"));  
 }
 else{
-action<-c("ACA.PA","MC.PA");
-
 
 mydata<-yahoodata("ACA.PA", from, to);
  
