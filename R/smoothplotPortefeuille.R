@@ -1,5 +1,5 @@
 smoothplotPortefeuille<- function(from = "2013-01-01", to=Sys.time()){
 mydata<-getPortefeuilleValue(from,to);
-
- ggplot(mydata, aes(x=mydata[,1], y=mydata[,2]))
+x<-1:length(mydata);
+plot(x,mydata, xlab="x axis", ylab="y axis", main="my plot", ylim=c(min(mydata),max(mydata)), xlim=c(1,length(mydata)), pch=15, col="blue")
 }
