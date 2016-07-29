@@ -22,5 +22,5 @@ num<-dim(myporte)[1]
   gain<-round(gain,5);
 
 
-qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%");  
+qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%"))
 }
