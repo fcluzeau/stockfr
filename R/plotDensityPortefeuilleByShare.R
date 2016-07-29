@@ -13,12 +13,7 @@ gain[i]<-round(gain,5);
 
 
 
-h<-hist(gain, breaks=10, col="red", xlab="Variations en %",
-main="Histogramme de la Répartition des Variations des Actions du Portefeuille")
-xfit<-seq(min(gain),max(gain),length=40)
-yfit<-dnorm(xfit,mean=mean(gain),sd=sd(gain))
-yfit <- yfit*diff(h$mids[1:2])*length(gain)
-lines(xfit, yfit, col="blue", lwd=2)
+return(gain)
 }
 
 
