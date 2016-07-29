@@ -5,7 +5,7 @@ action<-getPortefeuille();
 gain<-numeric(length(action));
 for(i in 1:(length(action))){
 ticke<-action[i]
-gaini<-getCapitalGain(ticke, from, to)
+gaini<-100*getCapitalGain(ticke, from, to)
 gain[i]<-round(gaini,5);
 }
 
