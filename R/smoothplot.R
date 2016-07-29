@@ -14,10 +14,10 @@ smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
 }
 else{
 action<-c("ACA.PA","MC.PA");
-nombre<-c(2,3);
-for(i in 1:2){
+
+for(i in 1:length(action)){
 mydata<-yahoodata(action[i], from, to);
-qplot(Date, nombre[i]*Close, data = mydata, geom = c("line", "smooth"));
+qplot(Date, Close, data = mydata, geom = c("line", "smooth"));
 }
 }
 }
