@@ -17,7 +17,7 @@ action<-c("ACA.PA","MC.PA");
 nombre<-c(2,3);
 portefeuille<-c("action","nombre");
 for(i in 1:2){
-yahoodata(portefeuille[1,i], from, to);
+mydata<-yahoodata(portefeuille[1,i], from, to);
 qplot(Date, nombre[i]*Close, data = mydata, geom = c("line", "smooth"));
 }
 }
