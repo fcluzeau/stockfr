@@ -17,7 +17,9 @@ action<-c("ACA.PA","MC.PA");
 
 for(i in 1:length(action)){
 mydata<-yahoodata(action[i], from, to);
-qplot(Date, Close, data = mydata, geom = c("line", "smooth"));
+ mydata$up <- mydata$Open < mydata$Close;
+ggplot(data=mydata, aes(Date, Close, ymin=Low, ymax=High, color=up)) + geom_linerange() + theme(legend.position="none");
+}
 }
 }
 }
