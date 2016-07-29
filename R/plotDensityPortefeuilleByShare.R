@@ -11,9 +11,7 @@ gai<- (ase1-ase2)/ase2;
 gain[i]<-round(gain,5);
 }
 
-return(gain);
 
-}
 
 h<-hist(gain, breaks=10, col="red", xlab="Variations en %",
 main="Histogramme de la Répartition des Variations des Actions du Portefeuille")
