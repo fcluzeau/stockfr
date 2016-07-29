@@ -1,5 +1,7 @@
-plotDensityPortefeuilleByShare<-function(ticker=c("GOOG","ACA.PA"),from="2013-01-01", to=Sys.time()){
-action<-ticker;
+plotDensityPortefeuilleByShare<-function(from="2013-01-01", to=Sys.time()){
+
+action<-getPortefeuille();
+
 gain<-numeric(length(action));
 for(i in 1:(length(action))){
 ticke<-action[i]
