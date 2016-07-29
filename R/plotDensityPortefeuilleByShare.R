@@ -1,5 +1,5 @@
 plotDensityPortefeuilleByShare<-function(ticker=c("GOOG","ACA.PA"),from="2013-01-01", to=Sys.time()){
-
+action<-getPortefeuille();
 gain<-numeric(length(ticker));
 for(i in 1:(length(ticker))){
 mydatai<-yahoodata(action[i], from, to);
