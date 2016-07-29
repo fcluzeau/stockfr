@@ -1,5 +1,5 @@
 smoothplotPortefeuille<- function(from = "2013-01-01", to=Sys.time()){
-mydata<-getPortefeuilleValue(from,to);
+y<-getPortefeuilleValue(from,to);
 x<-1:length(mydata);
-points(x, mydata, pch=16, col="green")
+plot(x, y, pch=2, col="red")
 }
