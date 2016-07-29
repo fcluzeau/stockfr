@@ -19,11 +19,11 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		plotDensity = plotDensity(ticker, from, to),
 		getPlotCapitalGain = getPlotCapitalGain(ticker, from, to),
 		densityGain = densityGain(ticker, from, to),
-		plotDensityPortefeuilleByShare = plotDensityPortefeuilleByShare(ticker,from,to)
+		plotDensityPortefeuilleByShare = plotDensityPortefeuilleByShare(from,to)
 		stop("Unknown plot type:", type)
 	);
 	
-	if(type!="plotDensity" & type!="getPlotCapitalGain" & type!="densityGain"  ){
+	if(type!="plotDensity" & type!="getPlotCapitalGain" & type!="densityGain" & type!="plotDensityPortefeuilleByShare"){
 	#remove axis label date
 	myplot <- myplot + xlab("") + ylab(ticker);}
 	else{myplot}
