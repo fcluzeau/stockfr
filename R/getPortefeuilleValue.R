@@ -3,6 +3,7 @@ action<-c("ACA.PA","MC.PA");
 nombre<-c(2,3);
 portefeuille<-matrix(c(action,nombre), ncol=2, nrow=2, byrow=T);
 mydata<-matrix(nrow=dim(yahoodata(portefeuille[1,1], from, to))[1], ncol=length(action));
+mydataf<-matrix(nrow=dim(yahoodata(portefeuille[1,1], from, to))[1], ncol=length(action));
 for(i in 1:2){
 mydatai<-yahoodata(portefeuille[1,i], from, to);
 mydataf[,1]<-mydatai$Date
