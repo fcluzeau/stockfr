@@ -11,8 +11,8 @@ gai<- (ase1-ase2)/ase2;
 gain[i]<-round(gain,5);
 }
 
-
-d <- density(gain)
+gainf<-data.frame(gain)
+d <- density(gainf)
 plot(d, main="Répartition des valeurs")
 polygon(d, col="red", border="blue") 
 }
