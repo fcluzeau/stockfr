@@ -1,17 +1,18 @@
-plotDensityPortefeuilleByShare<-function(ticker=c(a1,"GOOG",a2,"ACA.PA"),from="2013-01-01", to=Sys.time()){
-ticker<-getPortefeuille();
-mydata<-matrix(ncol=(dim(ticker)/2),nrow=dim(yahoodata("GOOG", from, to))[1]);
-gain<-vector("numeric", (dim(ticker)/2))
-for(i in 1:(dim(ticker)/2)){
-mydatai<-yahoodata(ticker[i*2], from, to);
+plotDensityPortefeuilleByShare<-function(ticker=c("GOOG","ACA.PA"),from="2013-01-01", to=Sys.time()){
+ticker<-c("GOOG","ACA.PA");
+gain<-numeric(length(ticker));
+for(i in 1:(length(ticker)){
+mydatai<-yahoodata(action[i], from, to);
 names(mydatai)<-c("Symbol","Value","Date","Time","Name");
-mydata[,i]<-ticker[(i-1)*2+1]*mydatai[,2];
+num<-dim(mydatai)[1]
+ase1 <- mydatai[1,2];
+ase2<- mydatai[num,2];
+gai<- (ase1-ase2)/ase2;
+gain[i]<-round(gain,5);
 }
 
-for(i in 1:(dim(ticker)/2)){
-ase1 <- mydata[1,i];
-ase2<- mydata[num,i];
-gain[i]<-round((ase1-ase2)/ase2 , 5);
+return(gain);
+
 }
 
 h<-hist(gain, breaks=10, col="red", xlab="Variations en %",
