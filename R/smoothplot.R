@@ -12,5 +12,13 @@ smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
   if(ticker!="portefeuille"){mydata <- yahoodata(ticker, from, to);
   qplot(Date, Close, data = mydata, geom = c("line", "smooth"));  
 }
-else{smoothplotPortefeuille(from,to)}
+else{
+action<-c("ACA.PA","MC.PA");
+nombre<-c(2,3);
+
+for(i in 1:2){
+yahoodata(portefeuille[1,i], from, to);
+qplot(Date, nombre[i]*Close, data = mydata, geom = c("line", "smooth"));
+}
+}
 }
