@@ -19,7 +19,7 @@ num<-dim(myporte)[1]
   ase1 <- myporte[1,2];
   ase2<- myporte[num,2];
   gain<- (ase1-ase2)/ase2;
-  gain<-round(gain,5);
+  gain<-round(100*gain,5);
 
 
 qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%"))
