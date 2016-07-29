@@ -19,8 +19,8 @@ skewn<-skewness(gain);
 
 
 x <- gain;
-h<-hist(x, breaks=10, col="red", xlab=paste("Variations sur la période choisie en %",moyenne,"; variance:",var,"; skewness", skewn,"; kurtosis:", kurt),
-   main="Histogramme de la Répartition des Variations des Actions du Portefeuille sur la Périodee")
+h<-hist(x, breaks=10, col="red", xlab=paste("Variations sur la période choisie en %; moyenne:",moyenne,"%; variance:",var,"; skewness", skewn,"; kurtosis:", kurt),
+   main="Histogramme de la Répartition des Variations des Actions du Portefeuille sur la Période")
 xfit<-seq(min(x),max(x),length=40)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
 yfit <- yfit*diff(h$mids[1:2])*length(x)
