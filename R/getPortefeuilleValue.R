@@ -1,6 +1,6 @@
 getPortefeuilleValue<-function( from = "2013-01-01", to=Sys.time()){
-action<-getPortefeuille()[1,];
-nombre<-getPortefeuille()[2,];
+action<-getPortefeuille()[,1];
+nombre<-getPortefeuille()[,2];
 m<-dim(yahoodata(action[1], from, to))[1];
 myporte<-matrix( nrow=m , ncol=2);
 
