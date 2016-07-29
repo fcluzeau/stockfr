@@ -8,10 +8,18 @@ ticke<-action[i]
 gaini<-100*getCapitalGain(ticke, from, to)
 gain[i]<-round(gaini,5);
 }
+ kurt<-kurtosis(gain);
+    kurt<-round(kurt,5);
+    var<-var(gain);
+var<-round(var,5);
+ moyenne<-mean(gain);
+    moyenne<-round(moyenne,5);
+skewn<-skewness(gain);
+    skewn<-round(skewn,5);
 
 
 x <- gain;
-h<-hist(x, breaks=10, col="red", xlab="Variations mensuelles en %",
+h<-hist(x, breaks=10, col="red", xlab=("Variations mensuelles en %; moyenne=",moyenne,"; variance:",variance,"; skewness", skewness,"; kurtosis:", kurtosis),
    main="Histogramme de la Répartition des Variations Mensuelle")
 xfit<-seq(min(x),max(x),length=40)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
