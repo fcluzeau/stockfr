@@ -29,7 +29,8 @@ if((i/20)==floor(i/20)){
 gainf[(i/20)]<-gaini[i];
 }}
 moyenneredm<-round(mean(100*gainf),5);
-moyennegeoredm<-round(100*getMoyenneGeometrique(gainf),5);
+moyennegeoredm<-100*getMoyenneGeometrique(gainf);
+moyennegeoredm<-round(moyennegeoredm,5);
 
 qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%","; moyenne arithmétique mensuelle du rendement:", moyenneredm,"%","; moyenne géométrique mensuelle du rendement:", moyennegeoredm,"%"))
 }
