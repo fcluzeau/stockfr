@@ -11,7 +11,7 @@
 smoothplot <- function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
   if(ticker!="portefeuille"){mydata <- yahoodata(ticker, from, to);
   vol<-volatilite(ticker, from, to);
-  qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Votilité de l'action ",vol));  
+  qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Votilité de l'action ",vol),ylab= ticker);  
 }
 
 }
