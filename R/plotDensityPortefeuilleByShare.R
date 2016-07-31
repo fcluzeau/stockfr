@@ -16,10 +16,11 @@ var<-round(var,5);
     moyenne<-round(moyenne,5);
 skewn<-skewness(gain);
     skewn<-round(skewn,5);
-
+moyennegeo<-getMoyenneGeometrique(gain);
+moyennegeo<-round(moyennegeo,5);
 
 x <- gain;
-h<-hist(x, breaks=10, col="red", xlab=paste("Variations sur la période choisie en %; moyenne:",moyenne,"%; variance:",var,"; skewness", skewn,"; kurtosis:", kurt),
+h<-hist(x, breaks=10, col="red", xlab=paste("Variations sur la période choisie en %; moyenne arithmétique:",moyenne,"%moyenne géométrique:",moyennegeo,"%; variance:",var,"; skewness", skewn,"; kurtosis:", kurt),
    main="Histogramme de la Répartition des Variations des Actions du Portefeuille sur la Période")
 xfit<-seq(min(x),max(x),length=40)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
