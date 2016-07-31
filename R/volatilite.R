@@ -8,6 +8,6 @@ res<-log((mydata$Value[i]/mydata$Value[i-1]), base = exp(1));
 res<-res*res;
 a<-a+res;
 }
-a<-a*252/(dim(mydata)[1])-1);
+a<-a*252/((dim(mydata)[1])-1);
 a<-sqrt(a);
 return(a);}
