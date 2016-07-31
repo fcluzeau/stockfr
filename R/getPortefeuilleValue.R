@@ -3,6 +3,7 @@ action<-getPortefeuille()[,1];
 nombre<-getPortefeuille()[,2];
 m<-dim(yahoodata(action[1], from, to))[1];
 myporte<-matrix( nrow=m , ncol=2);
+gaini<-numeric(m-1)
 
 for(i in 1:length(action)){
 mydata <- yahoodata(action[i], from, to);
@@ -27,8 +28,8 @@ gaini[i]<- 100*((myporte[i,2]-myporte[i+1,2])/myporte[i,2]);
 if((i/20)==floor(i/20)){
 gainf[(i/20),]<-gain[i,];
 }}
-moyenneredm<-mean(gainf);
-moyennegeoredm<-getMoyenneGeometrique(gainf);
+moyenneredm<-round(mean(gainf),5);
+moyennegeoredm<-round(getMoyenneGeometrique(gainf),5);
 
 qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%","; moyenne arithmétique mensuelle du rendement:", moyenneredm,"%","; moyenne géométrique mensuelle du rendement:", moyennegeoredm,"%"))
 }
