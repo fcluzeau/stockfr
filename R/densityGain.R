@@ -1,9 +1,9 @@
 densityGain<-function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
 gainf<-getCapitalGainMonth(ticker, from, to);
 moyennegeo<-getMoyenneGeometrique(gainf);
-moyennear<-mean(gainf)
+moyennear<-mean(gainf$Value)
 x <- gainf$Value;
-h<-hist(x, breaks=10, col="red", xlab=paste("Variations mensuelles en %; moyenne arithmétique:",moyennear,"moyenne géométrique:",moyennegeo)
+h<-hist(x, breaks=10, col="red", xlab=paste("Variations mensuelles en %; moyenne arithmétique gain mensuelle:",moyennear,"%","; moyenne géométrique gain mensuelle:",moyennegeo,"%")
    main="Histogramme de la Répartition des Variations Mensuelle")
 xfit<-seq(min(x),max(x),length=40)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
