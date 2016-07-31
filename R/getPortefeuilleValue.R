@@ -20,7 +20,15 @@ num<-dim(myporte)[1]
   ase2<- myporte[num,2];
   gain<- (ase1-ase2)/ase2;
   gain<-round(100*gain,5);
+  
+  gainf<-matrix(ncol=2,nrow=floor((dim(myporte)[1]-1)/20));
+for(i in 1:dim(myporte)[1]-1){
+gaini[i]<- 100*((myporte[i,2]-myporte[i+1,2])/myporte[i,2]);
+if((i/20)==floor(i/20)){
+gainf[(i/20),]<-gain[i,];
+}}
+moyenneredm<-mean(gainf);
+moyennegeoredm<-getMoyenneGeometrique(gainf);
 
-
-qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%"))
+qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%","; moyenne arithmétique mensuelle du rendement:", moyenneredm,"%","; moyenne géométrique mensuelle du rendement:", moyennegeoredm,"%"))
 }
