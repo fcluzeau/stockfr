@@ -1,5 +1,6 @@
 densityGain<-function(ticker = "GOOG", from = "2013-01-01", to=Sys.time()){
 gainf<-getCapitalGainMonth(ticker, from, to);
+gainf<-as.numeric(gainf);
 moyenne<-mean(gainf)
 moyenne<-round(moyenne,5);
 moyennegeo<-round(getMoyenneGeometrique(gainf),5);
