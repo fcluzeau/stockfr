@@ -23,7 +23,7 @@ plotwrapper <- function(type=c("smoothplot", "highlowplot", "areaplot", "plotDen
 		getPortefeuilleValue = getPortefeuilleValue(from, to),
 		stop("Unknown plot type:", type)
 	);
-	if(type=smoothplot){myplot}
+	if(type="smoothplot"){myplot}
 	else if(type!="plotDensity" & type!="getPlotCapitalGain" & type!="densityGain" & type!="plotDensityPortefeuilleByShare" & type!="getPortefeuilleValue"){
 	#remove axis label date
 	myplot <- myplot + xlab(Date) + ylab(ticker);}
