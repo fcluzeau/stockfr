@@ -28,8 +28,8 @@ gaini[i]<- 100*((myporte[i,2]-myporte[i+1,2])/myporte[i,2]);
 if((i/20)==floor(i/20)){
 gainf[(i/20)]<-gaini[i];
 }}
-moyenneredm<-100*round(mean(gainf),5);
-moyennegeoredm<-100*round(getMoyenneGeometrique(gainf),5);
+moyenneredm<-round(mean(100*gainf),5);
+moyennegeoredm<-round(getMoyenneGeometrique(100*gainf),5);
 
 qplot(Date, Close, data = mydata, geom = c("line", "smooth"), xlab=paste("Gain du Capital:",gain,"%","; moyenne arithmétique mensuelle du rendement:", moyenneredm,"%","; moyenne géométrique mensuelle du rendement:", moyennegeoredm,"%"))
 }
