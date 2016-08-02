@@ -40,9 +40,8 @@ Ext.onReady(function() {
       },
       itemclick : function(s, r){
         if(r.data.leaf){
-          var name = r.data.text.split(" - ");
-          var stock = name[0]
-          var company = name[1];
+          var checked_ids = treepanel.getChecked('id');
+          var stock = checked_ids;
           if(stock!=portefeuille){
           Ext.getCmp("details-panel").update('<div class="detaildiv"> <h3>' + company + '</h3> Yahoo Finance: <a target="_blank" href="http://finance.yahoo.com/q?s=' + stock + '">'+stock+'</a></div>');
         }   
@@ -51,6 +50,24 @@ Ext.onReady(function() {
       }
     }      
   });  
+  
+  
+
+Ext.override(Ext.tree.TreePanel,{
+    getChecked: function( prop ){
+        var prop = prop || null;
+        var checked = [];
+
+        this.getView().getTreeStore().getRootNode().cascadeBy(function(node){
+           if( node.data.checked ){
+                if( prop && node.data[prop] ) checked.push(node.data[prop]);
+                else checked.push(node);
+           }
+        });
+
+        return checked;
+    }
+})
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
     "items" :['->',{
