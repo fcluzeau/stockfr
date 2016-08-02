@@ -4,6 +4,74 @@ Ext.Loader.setConfig({
 
 Ext.onReady(function() {
   
+  var porte=Ext.create('Ext.form.Panel', {
+    bodyPadding: 10,
+    width      : 300,
+    title      : 'Pizza Order',
+    items: [
+        {
+            xtype      : 'fieldcontainer',
+            fieldLabel : 'Toppings',
+            defaultType: 'checkboxfield',
+            items: [
+                {
+                    boxLabel  : 'Anchovies',
+                    name      : 'topping',
+                    inputValue: '1',
+                    id        : 'checkbox1'
+                }, {
+                    boxLabel  : 'Artichoke Hearts',
+                    name      : 'topping',
+                    inputValue: '2',
+                    checked   : true,
+                    id        : 'checkbox2'
+                }, {
+                    boxLabel  : 'Bacon',
+                    name      : 'topping',
+                    inputValue: '3',
+                    id        : 'checkbox3'
+                }
+            ]
+        }
+    ],
+    bbar: [
+        {
+            text: 'Select Bacon',
+            handler: function() {
+                var checkbox = Ext.getCmp('checkbox3');
+                checkbox.setValue(true);
+            }
+        },
+        '-',
+        {
+            text: 'Select All',
+            handler: function() {
+                var checkbox1 = Ext.getCmp('checkbox1'),
+                    checkbox2 = Ext.getCmp('checkbox2'),
+                    checkbox3 = Ext.getCmp('checkbox3');
+
+                checkbox1.setValue(true);
+                checkbox2.setValue(true);
+                checkbox3.setValue(true);
+            }
+        },
+        {
+            text: 'Deselect All',
+            handler: function() {
+                var checkbox1 = Ext.getCmp('checkbox1'),
+                    checkbox2 = Ext.getCmp('checkbox2'),
+                    checkbox3 = Ext.getCmp('checkbox3');
+
+                checkbox1.setValue(false);
+                checkbox2.setValue(false);
+                checkbox3.setValue(false);
+            }
+        }
+    ],
+    renderTo: Ext.getBody()
+});
+
+  
   var today = new Date();
   
   var treePanel = new Ext.tree.TreePanel({
@@ -176,7 +244,7 @@ Ext.onReady(function() {
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel, detailsPanel ]
+      items : [ treePanel, detailsPanel , porte ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
