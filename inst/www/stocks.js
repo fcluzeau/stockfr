@@ -3,70 +3,9 @@
 
 
 
-var portefeuille = Ext.define('portefeuille', {
-    extend: 'Ext.tree.Panel',
-    
-    requires: [
-        'Ext.data.TreeStore'
-    ],
-    xtype: 'check-tree',
-    
-    
-    rootVisible: false,
-    useArrows: true,
-    frame: true,
-    title: 'Check Tree',
-    id: 'portefeuille',
-    split: true,      
-    height: 205,
-    minSize: 150,   
-    title: 'Portefeuille',
-    region: 'south',
-    bufferedRenderer: false,
-    animate: true,
-    
-    initComponent: function(){
-
-      Ext.getCmp("tree-panel").getStore().setProxy({
-        type : "memory",
-        data : data,
-        reader : {
-          type: "json"
-        }
-      })
-      ,
-            tbar: [{
-                text: 'Get checked nodes',
-                scope: this,
-                handler: this.onCheckedNodesClick
-            }]
-        });
-        this.callParent();
-    },
-    
-    onCheckedNodesClick: function(){
-        var records = this.getView().getChecked(),
-            names = [];
-                   
-        Ext.Array.each(records, function(rec){
-            names.push(rec.get('text'));
-        });
-                    
-        Ext.MessageBox.show({
-            title: 'Selected Nodes',
-            msg: names.join('<br />'),
-            icon: Ext.MessageBox.INFO
-        });
-    }
-});
 
 
 
-
-
-Ext.Loader.setConfig({
-  disableCaching: false
-});
 
 Ext.onReady(function() {
   
@@ -89,7 +28,6 @@ Ext.onReady(function() {
     autoWidth: true,
         
     // tree-specific configs:
-     
     rootVisible: false,
     lines: false,
     singleExpand: true,
@@ -105,27 +43,17 @@ Ext.onReady(function() {
           addWorkspace(r.data.id.substring(7));
         }
       },
-    
+      itemclick : function(s, r){
+        if(r.data.leaf){
+          var name = r.data.text.split(" - ");
+          var stock = name[0]
+          var company = name[1];
+          Ext.getCmp("details-panel").update('<div class="detaildiv"> <h3>' + company + '</h3> Yahoo Finance: <a target="_blank" href="http://finance.yahoo.com/q?s=' + stock + '">'+stock+'</a></div>');
+        }            
+      }
     }      
   });  
-  
-  
-
-Ext.override(Ext.tree.TreePanel,{
-    getChecked: function( prop ){
-        var prop = prop || null;
-        var checked = [];
-
-        this.getView().getTreeStore().getRootNode().cascadeBy(function(node){
-           if( node.data.checked ){
-                if( prop && node.data[prop] ) checked.push(node.data[prop]);
-                else checked.push(node);
-           }
-        });
-
-        return checked;
-    }
-})
+    
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
     "items" :['->',{
@@ -368,6 +296,8 @@ Ext.override(Ext.tree.TreePanel,{
     });
   }
   
+ 
+  
   function datetostring(date){
     var dd = date.getDate();
     var mm = date.getMonth()+1;
@@ -375,7 +305,9 @@ Ext.override(Ext.tree.TreePanel,{
     return yyyy + "-" + mm + "-" + dd;    
   }
   
-  //this function gets a list of stocks to populate the tree panel
+
+
+ //this function gets a list of stocks to populate the tree panel
   function loadtree(){
     var req = ocpu.rpc("listbyindustry", {}, function(data){
       Ext.getCmp("tree-panel").getStore().setProxy({
@@ -394,3 +326,5 @@ Ext.override(Ext.tree.TreePanel,{
   //init
   loadtree();
 });
+  
+  
