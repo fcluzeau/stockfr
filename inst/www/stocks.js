@@ -5,9 +5,14 @@ Ext.Loader.setConfig({
 Ext.onReady(function() {
   
   var porte=Ext.create('Ext.form.Panel', {
+    id='prorte',
     bodyPadding: 10,
-    width      : 300,
-    title      : 'Pizza Order',
+   split: true,    
+    height: 205,
+    minSize: 150,   
+    title: 'Pizza',
+    region: 'south', 
+    
     items: [
         {
             xtype      : 'fieldcontainer',
@@ -221,15 +226,7 @@ Ext.onReady(function() {
     tbar: myToolbar  
   });
   
-  var detailsPanel = Ext.Panel({
-    id: 'details-panel',
-    split: true,      
-    height: 205,
-    minSize: 150,   
-    title: 'Details',
-    region: 'south',    
-    bodyStyle: 'padding-bottom:15px;background:#eee;'
-  });  
+ 
 
   new Ext.Viewport({
     id : 'viewport',
@@ -244,7 +241,7 @@ Ext.onReady(function() {
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel, detailsPanel , porte ]
+      items : [ treePanel , porte ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
