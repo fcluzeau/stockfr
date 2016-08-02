@@ -1,8 +1,17 @@
 
 
 
+var detailsPanel = Ext.Panel({
+    id: 'details-panel',
+    split: true,      
+    height: 205,
+    minSize: 150,   
+    title: 'Details',
+    region: 'south',    
+    bodyStyle: 'padding-bottom:15px;background:#eee;'
+  });  
 
-Ext.define('portefeuille', {
+var portefeuillepanel = Ext.define('portefeuille', {
     extend: 'Ext.tree.Panel',
     
     requires: [
@@ -15,8 +24,12 @@ Ext.define('portefeuille', {
     useArrows: true,
     frame: true,
     title: 'Check Tree',
-    width: 280,
-    height: 300,
+    id: 'portefeuille',
+    split: true,      
+    height: 205,
+    minSize: 150,   
+    title: 'Portefeuille',
+    region: 'south',
     bufferedRenderer: false,
     animate: true,
     
@@ -100,16 +113,7 @@ Ext.onReady(function() {
           addWorkspace(r.data.id.substring(7));
         }
       },
-      itemclick : function(s, r){
-        if(r.data.leaf){
-          var checked_ids = treepanel.getChecked('id');
-          var stock = checked_ids;
-          if(stock!=portefeuille){
-          Ext.getCmp("details-panel").update('<div class="detaildiv"> <h3>' + company + '</h3> Yahoo Finance: <a target="_blank" href="http://finance.yahoo.com/q?s=' + stock + '">'+stock+'</a></div>');
-        }   
-        
-        }
-      }
+    
     }      
   });  
   
@@ -232,15 +236,7 @@ Ext.override(Ext.tree.TreePanel,{
     tbar: myToolbar  
   });
   
-  var detailsPanel = Ext.Panel({
-    id: 'details-panel',
-    split: true,      
-    height: 205,
-    minSize: 150,   
-    title: 'Details',
-    region: 'south',    
-    bodyStyle: 'padding-bottom:15px;background:#eee;'
-  });  
+
 
   new Ext.Viewport({
     id : 'viewport',
@@ -255,7 +251,7 @@ Ext.override(Ext.tree.TreePanel,{
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel, detailsPanel, portefeuille ]
+      items : [ treePanel, portefeuille ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
