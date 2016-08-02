@@ -73,7 +73,7 @@ Ext.onReady(function() {
             }
         }
     ],
-    renderTo: Ext.getBody()
+    
 });
 
   
