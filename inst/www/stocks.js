@@ -4,72 +4,6 @@ Ext.Loader.setConfig({
 
 Ext.onReady(function() {
   
- var porte=Ext.define('KitchenSink.view.tree.CheckTree', {
-    extend: 'Ext.tree.Panel',
-    xtype: 'check-tree',
-
-
-    // Checking propagates up and down
-    id:'porte',
-    checkPropagation: 'both',
-    controller: 'check-tree',
-    store: 'CheckTree',
-    rootVisible: false,
-    useArrows: true,
-    frame: true,
-    title: 'Check Tree',
-    height: 205,
-    minSize: 150, 
-    bufferedRenderer: false,
-    animate: true,
-    listeners: {
-        beforecheckchange: 'onBeforeCheckChange'
-    },
-    tbar: [{
-        text: 'Get checked nodes',
-        handler: 'onCheckedNodesClick'
-    }]
-});
-
-   Ext.define('KitchenSink.view.tree.CheckTreeController', {
-    extend: 'Ext.app.ViewController',
-    alias: 'controller.check-tree',
-
-    onBeforeCheckChange: function(record, checkedState, e) {
-        if (record.get('text') === 'Take a nap' && !checkedState) {
-            Ext.toast('No rest for the wicked!', null, 't');
-            return false;
-        }
-    },
-
-    onCheckedNodesClick: function() {
-        var records = this.getView().getChecked(),
-            names = [];
-
-        Ext.Array.each(records, function(rec){
-            names.push(rec.get('text'));
-        });
-
-        Ext.MessageBox.show({
-            title: 'Selected Nodes',
-            msg: names.join('<br />'),
-            icon: Ext.MessageBox.INFO
-        });
-    }
-});
-
-var reqe = ocpu.rpc("listbyindustry", {}, function(data){
-      Ext.getCmp("porte").getStore().setProxy({
-        type : "memory",
-        data : data,
-        reader : {
-          type: "json"
-        }
-      });
-
-
-
-  
   var today = new Date();
   
   var treePanel = new Ext.tree.TreePanel({
@@ -219,7 +153,15 @@ var reqe = ocpu.rpc("listbyindustry", {}, function(data){
     tbar: myToolbar  
   });
   
- 
+  var detailsPanel = Ext.Panel({
+    id: 'details-panel',
+    split: true,      
+    height: 205,
+    minSize: 150,   
+    title: 'Details',
+    region: 'south',    
+    bodyStyle: 'padding-bottom:15px;background:#eee;'
+  });  
 
   new Ext.Viewport({
     id : 'viewport',
@@ -234,7 +176,7 @@ var reqe = ocpu.rpc("listbyindustry", {}, function(data){
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel , porte ]
+      items : [ treePanel, detailsPanel ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
