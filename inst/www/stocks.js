@@ -6,53 +6,6 @@ Ext.onReady(function() {
   
   var today = new Date();
   
- var portefeuille= Ext.create('Ext.form.Panel', {
-    bodyPadding: 10,
- width : 300,
- title : 'CAC40',
- items: [
- {
- xtype : 'fieldcontainer',
- fieldLabel : 'Actions',
- defaultType: 'checkboxfield',
- items: [
- {
- boxLabel : 'Accord S.A.',
- name : 'Accord S.A.',
- inputValue: 'AC.PA',
- id : 'checkbox1'
- }, {
-boxLabel : 'Crédit Agricole',
- name : 'Crédit Agricole',
- inputValue: 'ACA.PA',
- checked  : true,
- id : 'checkbox2'
- }, {
-boxLabel : 'Air Liquide SA',
- name : 'Air liquide SA',
- inputValue: 'AI.PA',
- id : 'checkbox3'
- }
- ]
- }
- ],
-bbar: [
-
- {
- text: 'Deselect All',
- handler: function() {
-var checkbox1 = Ext.getCmp('checkbox1'),
- checkbox2 = Ext.getCmp('checkbox2'),
- checkbox3 = Ext.getCmp('checkbox3');
- checkbox1.setValue(false);
- checkbox2.setValue(false);
- checkbox3.setValue(false);
-}
- }
-],
- renderTo: Ext.getBody()
-});
-  
   var treePanel = new Ext.tree.TreePanel({
     id: 'tree-panel',
     iconCls: 'chartIcon',
@@ -223,7 +176,7 @@ var checkbox1 = Ext.getCmp('checkbox1'),
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel, detailsPanel, portefeuille ]
+      items : [ treePanel, detailsPanel ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
