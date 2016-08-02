@@ -1,11 +1,6 @@
-
-
-
-
-
-
-
-
+Ext.Loader.setConfig({
+  disableCaching: false
+});
 
 Ext.onReady(function() {
   
@@ -48,12 +43,14 @@ Ext.onReady(function() {
           var name = r.data.text.split(" - ");
           var stock = name[0]
           var company = name[1];
+          if(stock!=portefeuille){
           Ext.getCmp("details-panel").update('<div class="detaildiv"> <h3>' + company + '</h3> Yahoo Finance: <a target="_blank" href="http://finance.yahoo.com/q?s=' + stock + '">'+stock+'</a></div>');
-        }            
+        }   
+        
+        }
       }
     }      
   });  
-    
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
     "items" :['->',{
@@ -156,7 +153,15 @@ Ext.onReady(function() {
     tbar: myToolbar  
   });
   
-
+  var detailsPanel = Ext.Panel({
+    id: 'details-panel',
+    split: true,      
+    height: 205,
+    minSize: 150,   
+    title: 'Details',
+    region: 'south',    
+    bodyStyle: 'padding-bottom:15px;background:#eee;'
+  });  
 
   new Ext.Viewport({
     id : 'viewport',
@@ -171,7 +176,7 @@ Ext.onReady(function() {
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel, portefeuille ]
+      items : [ treePanel, detailsPanel ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
@@ -296,8 +301,6 @@ Ext.onReady(function() {
     });
   }
   
- 
-  
   function datetostring(date){
     var dd = date.getDate();
     var mm = date.getMonth()+1;
@@ -305,9 +308,7 @@ Ext.onReady(function() {
     return yyyy + "-" + mm + "-" + dd;    
   }
   
-
-
- //this function gets a list of stocks to populate the tree panel
+  //this function gets a list of stocks to populate the tree panel
   function loadtree(){
     var req = ocpu.rpc("listbyindustry", {}, function(data){
       Ext.getCmp("tree-panel").getStore().setProxy({
@@ -326,5 +327,3 @@ Ext.onReady(function() {
   //init
   loadtree();
 });
-  
-  
