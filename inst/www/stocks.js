@@ -4,77 +4,70 @@ Ext.Loader.setConfig({
 
 Ext.onReady(function() {
   
-  var porte=Ext.create('Ext.form.Panel', {
-    id='prorte',
-    bodyPadding: 10,
-   split: true,    
+ var porte=Ext.define('KitchenSink.view.tree.CheckTree', {
+    extend: 'Ext.tree.Panel',
+    xtype: 'check-tree',
+
+
+    // Checking propagates up and down
+    id:'porte',
+    checkPropagation: 'both',
+    controller: 'check-tree',
+    store: 'CheckTree',
+    rootVisible: false,
+    useArrows: true,
+    frame: true,
+    title: 'Check Tree',
     height: 205,
-    minSize: 150,   
-    title: 'Pizza',
-    region: 'south', 
-    
-    items: [
-        {
-            xtype      : 'fieldcontainer',
-            fieldLabel : 'Toppings',
-            defaultType: 'checkboxfield',
-            items: [
-                {
-                    boxLabel  : 'Anchovies',
-                    name      : 'topping',
-                    inputValue: '1',
-                    id        : 'checkbox1'
-                }, {
-                    boxLabel  : 'Artichoke Hearts',
-                    name      : 'topping',
-                    inputValue: '2',
-                    checked   : true,
-                    id        : 'checkbox2'
-                }, {
-                    boxLabel  : 'Bacon',
-                    name      : 'topping',
-                    inputValue: '3',
-                    id        : 'checkbox3'
-                }
-            ]
-        }
-    ],
-    bbar: [
-        {
-            text: 'Select Bacon',
-            handler: function() {
-                var checkbox = Ext.getCmp('checkbox3');
-                checkbox.setValue(true);
-            }
-        },
-        '-',
-        {
-            text: 'Select All',
-            handler: function() {
-                var checkbox1 = Ext.getCmp('checkbox1'),
-                    checkbox2 = Ext.getCmp('checkbox2'),
-                    checkbox3 = Ext.getCmp('checkbox3');
-
-                checkbox1.setValue(true);
-                checkbox2.setValue(true);
-                checkbox3.setValue(true);
-            }
-        },
-        {
-            text: 'Deselect All',
-            handler: function() {
-                var checkbox1 = Ext.getCmp('checkbox1'),
-                    checkbox2 = Ext.getCmp('checkbox2'),
-                    checkbox3 = Ext.getCmp('checkbox3');
-
-                checkbox1.setValue(false);
-                checkbox2.setValue(false);
-                checkbox3.setValue(false);
-            }
-        }
-    ],
-    
+    minSize: 150, 
+    bufferedRenderer: false,
+    animate: true,
+    listeners: {
+        beforecheckchange: 'onBeforeCheckChange'
+    },
+    tbar: [{
+        text: 'Get checked nodes',
+        handler: 'onCheckedNodesClick'
+    }]
 });
+
+   Ext.define('KitchenSink.view.tree.CheckTreeController', {
+    extend: 'Ext.app.ViewController',
+    alias: 'controller.check-tree',
+
+    onBeforeCheckChange: function(record, checkedState, e) {
+        if (record.get('text') === 'Take a nap' && !checkedState) {
+            Ext.toast('No rest for the wicked!', null, 't');
+            return false;
+        }
+    },
+
+    onCheckedNodesClick: function() {
+        var records = this.getView().getChecked(),
+            names = [];
+
+        Ext.Array.each(records, function(rec){
+            names.push(rec.get('text'));
+        });
+
+        Ext.MessageBox.show({
+            title: 'Selected Nodes',
+            msg: names.join('<br />'),
+            icon: Ext.MessageBox.INFO
+        });
+    }
+});
+
+var reqe = ocpu.rpc("listbyindustry", {}, function(data){
+      Ext.getCmp("porte").getStore().setProxy({
+        type : "memory",
+        data : data,
+        reader : {
+          type: "json"
+        }
+      });
+
+
 
   
   var today = new Date();
