@@ -1,3 +1,64 @@
+
+
+
+
+Ext.define('portefeuille', {
+    extend: 'Ext.tree.Panel',
+    
+    requires: [
+        'Ext.data.TreeStore'
+    ],
+    xtype: 'check-tree',
+    
+    
+    rootVisible: false,
+    useArrows: true,
+    frame: true,
+    title: 'Check Tree',
+    width: 280,
+    height: 300,
+    bufferedRenderer: false,
+    animate: true,
+    
+    initComponent: function(){
+
+      Ext.getCmp("tree-panel").getStore().setProxy({
+        type : "memory",
+        data : data,
+        reader : {
+          type: "json"
+        }
+      })
+      ,
+            tbar: [{
+                text: 'Get checked nodes',
+                scope: this,
+                handler: this.onCheckedNodesClick
+            }]
+        });
+        this.callParent();
+    },
+    
+    onCheckedNodesClick: function(){
+        var records = this.getView().getChecked(),
+            names = [];
+                   
+        Ext.Array.each(records, function(rec){
+            names.push(rec.get('text'));
+        });
+                    
+        Ext.MessageBox.show({
+            title: 'Selected Nodes',
+            msg: names.join('<br />'),
+            icon: Ext.MessageBox.INFO
+        });
+    }
+});
+
+
+
+
+
 Ext.Loader.setConfig({
   disableCaching: false
 });
@@ -23,6 +84,7 @@ Ext.onReady(function() {
     autoWidth: true,
         
     // tree-specific configs:
+     
     rootVisible: false,
     lines: false,
     singleExpand: true,
@@ -193,7 +255,7 @@ Ext.override(Ext.tree.TreePanel,{
       width: 200,
       minSize: 100,
       maxSize: 500,
-      items : [ treePanel, detailsPanel ]
+      items : [ treePanel, detailsPanel, portefeuille ]
     }, workspacePanel ],
     renderTo : Ext.getBody()
   });
