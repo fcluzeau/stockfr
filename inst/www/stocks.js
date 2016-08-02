@@ -1,17 +1,9 @@
 
 
 
-var detailsPanel = Ext.Panel({
-    id: 'details-panel',
-    split: true,      
-    height: 205,
-    minSize: 150,   
-    title: 'Details',
-    region: 'south',    
-    bodyStyle: 'padding-bottom:15px;background:#eee;'
-  });  
 
-var portefeuillepanel = Ext.define('portefeuille', {
+
+var portefeuille = Ext.define('portefeuille', {
     extend: 'Ext.tree.Panel',
     
     requires: [
