@@ -34,29 +34,32 @@ Ext.onReady(function() {
     lines: false,
     singleExpand: true,
     useArrows: true,
-    store: {
+    
+    initComponent: function(){
+
+        Ext.apply(this, {
+            store: {
       xtype: 'checkbox',
       root: {
         expanded: true
       }
     },
+                sorters: [{
+                    property: 'leaf',
+                    direction: 'ASC'
+                }, {
+                    property: 'text',
+                    direction: 'ASC'
+                }]
+            }),
+    
     listeners: {
       itemdblclick: function(s, r){
         if(r.data.leaf){
           addWorkspace(r.data.id.substring(7));
         }
       },
-      itemclick : function(s, r){
-        if(r.data.leaf){
-          var name = r.data.text.split(" - ");
-          var stock = name[0]
-          var company = name[1];
-          if(stock!=portefeuille){
-          Ext.getCmp("details-panel").update('<div class="detaildiv"> <h3>' + company + '</h3> Yahoo Finance: <a target="_blank" href="http://finance.yahoo.com/q?s=' + stock + '">'+stock+'</a></div>');
-        }   
-        
-        }
-      }
+    
     }      
   });  
   
