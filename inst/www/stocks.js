@@ -28,6 +28,7 @@ Ext.onReady(function() {
     singleExpand: true,
     useArrows: true,
     store: {
+      xtype: 'checkbox',
       root: {
         expanded: true
       }
