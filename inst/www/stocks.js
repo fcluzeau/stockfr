@@ -52,6 +52,11 @@ Ext.onReady(function() {
       }
     }      
   });  
+  treePanel.getRootNode().cascadeBy(function(node) {
+    if(node.isLeaf()) {
+        node.set({checked:false});
+    }
+})
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
     "items" :['->',{
