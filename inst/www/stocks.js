@@ -6,7 +6,14 @@ Ext.onReady(function() {
   
   var today = new Date();
   
-  var treePanel = new Ext.tree.TreePanel({
+  Ext.define('treePanel', {
+    extend: 'Ext.tree.Panel',
+    
+    requires: [
+        'Ext.data.TreeStore'
+    ],
+    xtype: 'check-tree',
+    
     id: 'tree-panel',
     iconCls: 'chartIcon',
     title: 'by Index',
@@ -52,11 +59,7 @@ Ext.onReady(function() {
       }
     }      
   });  
-  treePanel.getRootNode().cascadeBy(function(node) {
-    if(node.isLeaf()) {
-        node.set({checked:false});
-    }
-})
+  
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
     "items" :['->',{
