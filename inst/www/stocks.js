@@ -59,6 +59,7 @@ Ext.onReady(function() {
         }
       }
     }      
+    node.set('checked',true);
   });  
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
