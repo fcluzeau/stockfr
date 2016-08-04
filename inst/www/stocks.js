@@ -1,3 +1,7 @@
+
+
+
+
 Ext.Loader.setConfig({
   disableCaching: false
 });
@@ -6,37 +10,32 @@ Ext.onReady(function() {
   
   var today = new Date();
   
- /**
- * This example shows simple checkbox selection in a tree. It is enabled on leaf nodes by
- * simply setting `checked: true/false` at the node level.
- *
- * This example also shows loading an entire tree structure statically in one load call,
- * rather than loading each node asynchronously.
- */
-var treePanel=Ext.define('KitchenSink.view.tree.CheckTree', {
-    extend: 'Ext.tree.Panel',
-    
-    requires: [
-        'Ext.data.TreeStore'
-    ],
-    xtype: 'check-tree',
-    
-    
-    rootVisible: false,
-    useArrows: true,
-    frame: true,
-    title: 'Check Tree',
-   height: 300,
-    bufferedRenderer: false,
+  var treePanel = new Ext.tree.TreePanel({
+    id: 'tree-panel',
+    iconCls: 'chartIcon',
+    title: 'by Index',
+    region: 'center',
+    title: "stocks",
+    height: 300,
+    border: false,
+    autoScroll: true,
+    lazyRender:true,
     animate: true,
-    
-    initComponent: function(){
-
-        Ext.apply(this, {
-            store: rootVisible: false,
+    containerScroll: true,
+    enableDrag: true,
+    dragConfig: {ddGroup: 'DragDrop' },
+    autoWidth: true,
+        
+    // tree-specific configs:
+    rootVisible: false,
     lines: false,
     singleExpand: true,
     useArrows: true,
+      setRootNode: function() {
+        if (this.getStore().autoLoad) {
+            this.callParent(arguments);
+        }
+    },
     store: {
       root: {
         expanded: true
@@ -47,25 +46,20 @@ var treePanel=Ext.define('KitchenSink.view.tree.CheckTree', {
         if(r.data.leaf){
           addWorkspace(r.data.id.substring(7));
         }
-}
- }      
-}); 
-    
-    onCheckedNodesClick: function(){
-        var records = this.getView().getChecked(),
-            names = [];
-                   
-        Ext.Array.each(records, function(rec){
-            names.push(rec.get('text'));
-        });
-                    
-        Ext.MessageBox.show({
-            title: 'Selected Nodes',
-            msg: names.join('<br />'),
-            icon: Ext.MessageBox.INFO
-        });
-    }
-});
+      },
+      itemclick : function(s, r){
+        if(r.data.leaf){
+          var name = r.data.text.split(" - ");
+          var stock = name[0]
+          var company = name[1];
+          if(stock!=portefeuille){
+          Ext.getCmp("details-panel").update('<div class="detaildiv"> <h3>' + company + '</h3> Yahoo Finance: <a target="_blank" href="http://finance.yahoo.com/q?s=' + stock + '">'+stock+'</a></div>');
+        }   
+        
+        }
+      }
+    }      
+  });  
     
   var myToolbar = Ext.create('Ext.toolbar.Toolbar', {
     "items" :['->',{
